@@ -1,13 +1,92 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-
-
-</head>
-
-<body>
-
-
-</body>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+          * {
+          box-sizing: border-box;
+          }
+          html, body {
+          min-height: 100vh;
+          padding: 0;
+          margin: 0;
+          font-family: Roboto, Arial, sans-serif;
+          font-size: 14px;
+          color: #666;
+          }
+          input {
+          outline: none;
+          }
+          body {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 10px;
+          background: #fff;
+          }
+          form {
+          position: relative;
+          width: 60%;
+          border-radius: 30px;
+          background: #fff;
+          }
+          .circle {
+          position: absolute;
+          bottom: 80px;
+          left: -55px;
+          width: 20px;
+          height: 20px;
+          border-radius: 50%;
+          background: #fff;
+          }
+          .form-inner {
+          padding: 40px;
+          }
+          .form-inner input{
+          display: block;
+          width: 100%;
+          padding: 15px;
+          margin-bottom: 10px;
+          border: none;
+          border-radius: 20px;
+          background: #d0dfe8;
+          }
+          button {
+          width: 100%;
+          padding: 10px;
+          margin-top: 20px;
+          border-radius: 20px;
+          border: none;
+          border-bottom: 4px solid #3e4f24;
+          background: #5a7233;
+          font-size: 16px;
+          font-weight: 400;
+          color: #fff;
+          }
+          button:hover {
+          background: #3e4f24;
+          }
+          @media (min-width: 568px) {
+          form {
+          width: 60%;
+          }
+          }
+        </style>
+    </head>
+    <body>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387190.279909073!2d-74.25987368715491!3d40.69767006458873!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sin!4v1667632715793!5m2!1sen!2sin" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <form action="{{url_for('predict')}}" method="POST" class="decor">
+            <div class="circle"></div>
+            <div class="form-inner">
+                <h1 align="center">NYC Taxi Fare <br> {{data}}</h1>
+                <input type="number" step=".000001" min=40 max=44 class="form-control" id="pickup_longitude" placeholder="Pickup Longitude eg. 40.774012" name="pickup_longitude">
+                <input type="number" step=".000001" min=-76 max=-72 class="form-control" id="pickup_latitude" placeholder="Pickup Latitude eg. -73.977465" name="pickup_latitude">
+                <input type="number" step=".000001" min=40 max=44 class="form-control" id="dropoff_longitude" placeholder="Dropoff Longitude eg. 40.774012" name="dropoff_longitude">
+                <input type="number" step=".000001" min=-76 max=-72 class="form-control" id="dropoff_latitude" placeholder="Dropoff Latitude eg. -73.977465" name="dropoff_latitude">
+                <input type="datetime-local" class="form-control" id="datetime" name="datetime">
+                <input type="number" class="form-control" id="passenger_count" placeholder="# of passenger's" name="passenger_count">
+                <button type="submit" href="/">Get Fare Amount</button>
+            </div>
+        </form>
+    </body>
 </html>
