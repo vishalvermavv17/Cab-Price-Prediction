@@ -1,4 +1,4 @@
-TRAINED_MODEL_NAME = "rf_model.pkl"
+TRAINED_MODEL_NAME = "rf_model.pkl.gz"
 
 TARGET_LABEL = ['fare_amount']
 FEATURE_COLUMNS = [

@@ -17,7 +17,7 @@ models_dirpath = 'models/'
 template_dir = os.path.join(os.getcwd(), 'src/templates')
 
 app = Flask(__name__, template_folder=template_dir)
-model = joblib.load(open(os.getcwd() + '/' + models_dirpath + 'rf_model.pkl', 'rb'))
+model = joblib.load(open(os.getcwd() + '/' + models_dirpath + TRAINED_MODEL_NAME, 'rb'))
 
 
 @app.route('/')
