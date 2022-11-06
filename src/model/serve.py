@@ -8,7 +8,7 @@ import joblib
 import os
 import sys
 import logging
-os.chdir("D:/Cab Price Prediction/")
+
 sys.path.append("models")
 sys.path.append("src/model")
 
