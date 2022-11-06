@@ -36,3 +36,35 @@ FEATURES: pickup_datetime, pickup_longitude, pickup_latitude, dropoff_longitude,
 Data exploration is performed using the Python 3 using pandas, numpy, matplotlib and seaborn library that helps to generate standardized data exploration reports for data containing numerical and categorical features and target. 
 
 The details of data exploration and visualisation are present in project notebook and visulations are stored in visualisation directory.
+
+## 3. **Modeling**
+
+### Feature Engineering
+**Data cleanup: Removing columns and rows**
+We have performed feature engineering on random sub-sample without replacing of given data set having 1.2 million rows (~10%) because given dataset is quite large and can be sufficiently represented with sub-sample.
+
+We have performed validation checks on each sample and removed samples that violates the validation condition. Below are the mentioned validations performed on training dataset.
+1. fare amount > $0 and fare amount <= $500
+2. passenger count > 0
+3. valid range is -90 to 90 for latitude and -180 to 180 for longitude
+4. pickup and dropoff geolocations should be different
+5. harvensine distance between two geolocation should be >= 1km
+
+**Feature creation from pickup datetime variable**
+Pickup datetime variable is distributed into sub variable like day_of_week, minute, hr_of_day, month, year, day.
+
+**Haversine distance**
+Feature engineered a h_distance variable using haversine formula that computes distance between pickup and dropoff geolocations for each sample.
+
+**Saving processed data sets for modeling input**
+Training and test data sets were stored in feather file format and saved as .feather files for input into modeling (training data), and model evaluation or deployment (test data). We chose feather file format as these are light weight and fast on-disk file format especially to store dataframes.
+
+### Modeling training
+We created Random Forest regressor model with 3-fold cross-validation. We used [HyperOpt](http://hyperopt.github.io/hyperopt/) for  as a strategy for cross-validation. 
+
+### Model evaluation
+Performance of the models were measured using [RMSE](https://en.wikipedia.org/wiki/Root-mean-square_deviation) on the test data set. RMSE of Random Forest models were < 3.4. We saved model in pickled.pkl files, and output the RMSE validation score for model. In addition, for model interpretation, feature importance for the Random Forest model are output in a .csv file and plotted below. 
+
+Importance of features from the Random Forest model is shown below:
+
+![feature_importance](https://user-images.githubusercontent.com/20114106/200174871-499bddca-3f17-4404-acb8-3186a85b7b73.png)
