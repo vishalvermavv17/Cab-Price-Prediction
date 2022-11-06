@@ -1,5 +1,5 @@
 # Data Science Project Report : Machine Learning regression problem of Cab fare prediction.
-This file contains information about project being executed in this case 'Cab fare prediction'. It is organized according to the Team Data Science Process (TDSP [Lifecycle stages](https://github.com/Azure/Microsoft-TDSP/blob/master/Docs/lifecycle-detail.md).
+This file contains information about project being executed in this case 'Cab fare prediction'. It is organized according to the Team Data Science Process (TDSP) [Lifecycle stages](https://github.com/Azure/Microsoft-TDSP/blob/master/Docs/lifecycle-detail.md).
 ![template_screenshot](https://user-images.githubusercontent.com/20114106/200154152-54f11b9a-7b3f-4365-b534-4a0bf772e8b1.PNG)
 
 # 1. Business Understanding
@@ -68,3 +68,25 @@ Performance of the models were measured using [RMSE](https://en.wikipedia.org/wi
 Importance of features from the Random Forest model is shown below:
 
 ![feature_importance](https://user-images.githubusercontent.com/20114106/200174871-499bddca-3f17-4404-acb8-3186a85b7b73.png)
+
+## 4. **Deployment**
+We deployed the Random Forest Model. Deployment is performed using Heroku App Services using github workflows. 
+Here is a webapp link to use prediction service.
+[`https://cab-fare-prediction-v1.herokuapp.com/`](https://cab-fare-prediction-v1.herokuapp.com/)
+
+## Version Control Repository
+An empty Git repository is needed to version control contents of this project. 
+
+#### Deployment
+Service is run in the Azure Container Service (ACS). The operationalization environment provisions Docker and Kubernetes in the cluster to manage the web service deployment.
+
+#### Code Execution
+Executing a Flask server in Docker environment is easy:
+
+ ```
+ docker build -t cab-fare-prediction .
+ 
+ docker run -p 5000:5000 cab-fare-prediction
+ ```
+
+IPython notebook files can be double-clicked from the project structure and run in the Jypyter Notebook Server.
